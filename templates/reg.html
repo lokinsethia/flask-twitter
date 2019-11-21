@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/boot.css') }}" >
+  </head>
+<body>
+    <div class="container">
+    <form method="post">
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Email</label>
+      <input type="text" class="form-control" id="inputEmail4" name="username" placeholder="Email">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputPassword4">Password</label>
+      <input type="password" class="form-control" id="inputPassword4" name ="password" placeholder="Password">
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Sign Up</button>
+        
+</form>
+    {% if error %}
+<div class="alert alert-warning" role="alert">
+ {{error}}
+</div>
+{% endif %}
+        </div>
+    <script src="{{ url_for('static',filename='js/jq.js') }}" ></script>
+    <script src="{{ url_for('static',filename='js/pop.js') }}" ></script>
+    <script src="{{ url_for('static',filename='js/boot.js') }}" ></script>
+    </body>
+</html>

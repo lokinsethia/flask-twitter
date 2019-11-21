@@ -1,0 +1,82 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/boot.css') }}" >
+  </head>
+  <body>
+      {% if errorm %}
+        <div class="alert alert-warning" role="alert">
+  Error : {{errorm}}
+</div>
+      
+    {% else %}
+    <div class="container">
+	  <nav class="navbar top navbar-light bg-light">
+          <p class="navbar-brand" href="#">Welcome to, {{username}}s profile ^_^ </p>
+               
+        </nav>
+        {% if scheck=="selfaccount" %}
+         <form action="" method="post" style="text-align: left;padding: 10px 5px">
+        <input type="text" placeholder="What's Up Today?" name="short_post">
+                    <button class="btn btn-light" name="post" type="submit" value="Post">
+                    Post</button>
+             <button class="btn btn-dark" type="submit" style="float:right" name="logout1" value="logout" >
+                 Logout</button>
+             <a class="btn btn-outline-secondary" href="{{url_for('home')}}">Home</a>
+      </form>
+        
+        {% else %}
+        {%if stat=="Follow" %}
+        <form action="" method="post" style="text-align: left;padding: 10px 5px">
+              <button class="btn btn-light" type="submit" style="" name="follow" value="follow" >
+                 {{stat}}</button>
+             <button class="btn btn-dark" type="submit" style="float: right" name="logout" value="logout">
+                 Logout</button>
+            <a class="btn btn-outline-secondary" href="{{url_for('home')}}">Home</a>
+        </form>
+        {% elif stat=="Following" %}
+                <form action="" method="post" style="text-align: left;padding: 10px 5px">
+              <button class="btn btn-light" type="submit" style="" name="unfollow" value="unfollow" >
+                 {{stat}}</button>
+             <button class="btn btn-dark" type="submit" style="float: right" name="logout" value="logout">
+                 Logout</button>
+             <a class="btn btn-outline-secondary" href="{{url_for('home')}}">Home</a>
+        </form>
+        {% endif %}
+        {% endif %}
+      </div>
+<div class="container">
+        {% if items %}
+        <div class="list-group">
+        {% for item in items %}
+        {% if item.user== username%}
+  <a href="#" class="list-group-item list-group-item-action ">
+    <div class="d-flex w-100 justify-content-between">
+      <p class="mb-1">{{item.post}}</p>
+        {% if item.user== cur%}
+        <form method="post" name="del">
+        <button type="submit" class="btn btn-dark" value="{{item.post}}" name="delete"><small>Del</small></button></form>
+         {% endif %}
+    </div>
+    
+    <small>Made by: {{item.user}}</small>
+  </a>
+        
+            {% endif %}
+        {% endfor %}		
+		</div>
+
+    {% endif %}
+    {% endif %}
+    </div>
+    <script src="{{ url_for('static',filename='js/jq.js') }}" ></script>
+    <script src="{{ url_for('static',filename='js/pop.js') }}" ></script>
+    <script src="{{ url_for('static',filename='js/boot.js') }}" ></script>
+  </body>
+</html>

@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+      <style>
+      .error-template {padding: 40px 15px;text-align: center;}
+.error-actions {margin-top:15px;margin-bottom:15px;}
+.error-actions .btn { margin-right:10px; }
+      </style>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/boot.css') }}" >
+  </head>
+<!------ Include the above in your HEAD tag ---------->
+<body>
+ <script src="{{ url_for('static',filename='js/jq.js') }}" ></script>
+    <script src="{{ url_for('static',filename='js/pop.js') }}" ></script>
+    <script src="{{ url_for('static',filename='js/boot.js') }}" ></script>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="error-template">
+                <h1>
+                    Oops!</h1>
+                <h2>
+                    404 Not Found</h2>
+                <div class="error-details">
+                    Sorry, an error has occured, Requested page not found!
+                </div>
+                <div class="error-actions">
+                    <a href="{{url_for('home')}}" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-home"></span>
+                        Take Me Home </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    </body>
+</html>

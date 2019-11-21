@@ -1,0 +1,58 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/boot.css') }}" >
+  </head>
+  <body>
+      {% if error=="Please login to view posts" %}
+        <p class="error"><strong>Error:</strong> {{ error }}
+      
+    {% else %}
+    <div class="container">
+	  <nav class="navbar top navbar-light bg-light">
+          <a class="navbar-brand" href="{{url_for('user',username1=username)}}">Hello {{username}}</a>
+               
+        </nav>
+         <form action="" method="post" style="text-align: left;padding: 10px 5px">
+        <input type="text" placeholder="What's Up Today?" name="short_post">
+                    <button class="btn btn-light" type="submit" value="Post" name="posting">
+                    Post</button>
+             <button onclick= "" class="btn btn-dark" type="submit" style="float: right" >
+                 Logout</button>
+      </form>
+      </div>
+<div class="container">
+        {% if items %}
+        <div class="list-group">
+        {% for item in items %}
+        
+  <a href="{{ url_for('user', username1=item.user)}}" class="list-group-item list-group-item-action ">
+    <div class="d-flex w-100 justify-content-between">
+      <p class="mb-1">{{item.post}}</p>
+        {% if item.user== username%}
+        <form method="post" name="del">
+        <button type="submit" class="btn btn-dark" value="{{item.post}}" name="delete"><small>Del</small></button></form>
+        {% endif %}
+    </div>
+    
+    <small>Made by: {{item.user}}</small>
+  </a>
+        
+
+        {% endfor %}		
+		</div>
+
+    {% endif %}
+    {% endif %}
+    </div>
+    <script src="{{ url_for('static',filename='js/jq.js') }}" ></script>
+    <script src="{{ url_for('static',filename='js/pop.js') }}" ></script>
+    <script src="{{ url_for('static',filename='js/boot.js') }}" ></script>
+  </body>
+</html>
